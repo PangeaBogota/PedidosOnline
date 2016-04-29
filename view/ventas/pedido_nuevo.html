@@ -1,0 +1,171 @@
+<style>
+    #ui-id-1:hover {
+        display: block;
+    }
+</style>
+
+<!--=== Validation Example 4 ===-->
+<div class="row" ng-controller="pedidoController">
+	<!--=== Inline Tabs ===-->
+	<div class="col-md-12">
+		<!--<div class="widget box">
+			<div class="widget-header">
+				<h4><i class="icon-reorder"></i> Nuevo Pedido</h4>
+			</div>
+			<div class="widget-content">-->
+				<!-- Tabs-->
+				<div class="tabbable tabbable-custom">
+					<ul class="nav nav-tabs tabs">
+						<li data-tab="tab_1" class="active"><a data-tab="tab_1" data-toggle="tab">1. Encabezado</a></li>
+						<li data-tab="tab_2"><a data-tab="tab_2" data-toggle="tab">2. Detalle</a></li>
+						<li data-tab="tab_3"><a data-tab="tab_3" data-toggle="tab">3. Balance</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_1">
+							<div class="col-md-12">
+								<form class="form-vertical row-border" name="form_encabezado" id="form_encabezado" novalidate >
+									<input type="hidden" name="rowid_empresa" id="rowid_empresa" ng-model="pedidos.rowid" />
+									<input type="hidden" name="rowid_empresa" id="rowid_empresa" ng-model="pedidos.rowid_empresa" value="4"/>
+									<input type="hidden" name="id_cia" id="id_cia" ng-model="pedidos.id_cia" value="1"/>
+									<input type="hidden" name="rowid_bodega" id="rowid_bodega" ng-model="pedidos.rowid_bodega" value="1"/>
+									<input type="hidden" name="fechacreacion" id="fechacreacion" ng-model="pedidos.fechacreacion" value="01-01-2016"/>
+									<input type="hidden" name="id_estado" id="id_estado" ng-model="pedidos.id_estado" value="101"/>
+
+									<div class="form-group">
+										<label for="rowid_tercero" class="control-label">Tercero  <span class="required">*</span></label>
+                                        <input  placeholder="Seleccionar Tercero" type="text" ng-model="Search" class="form-control"></input>
+                                        <select 
+                                        	ng-model="terceroSelected" id="TerceroSelected" ng-options="partner as partner.razonsocial 
+                                            for partner in list_tercero | filter:Search" class="form-control" ng-change="onChangeTercero()" required>
+                                        </select>
+										<label for="rowid_tercero" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Sucursal Facturacion <span class="required">*</span></label>
+										<select  id="rowid_cliente_facturacion" required
+                                            ng-model="sucursal"  ng-options="sucursal as sucursal.nombre_sucursal 
+                                            for sucursal in list_Sucursales " class="form-control" ng-change="onChangeSucursal()" >
+                                        </select>
+										<label for="rowid_cliente_facturacion" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+									<div class="form-group">
+										<label class="control-label">Sucursal Despacho <span class="required">*</span></label>
+										<select  id="rowid_cliente_despacho" required
+                                            ng-model="pedidos.rowid_cliente_despacho"  ng-options="sucursal.rowid as sucursal.nombre_sucursal 
+                                            for sucursal in list_Sucursales " class="form-control"  >
+                                        </select>
+										<label for="rowid_cliente_despacho" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Lista Precio <span class="required">*</span></label>
+										<select  id="rowid_lista_precios" required
+                                            ng-model="pedidos.rowid_lista_precios"  ng-options="listprecios.rowid as listprecios.erp_descripcion 
+                                            for listprecios in list_precios " class="form-control" >
+                                        </select>
+										<label for="rowid_lista_precios" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Punto Envio <span class="required">*</span></label>
+										<select id="id_punto_envio"  required
+                                            ng-model="pedidos.id_punto_envio"  ng-options="puntoenvio.rowid as puntoenvio.Nombre_punto_envio 
+                                            for puntoenvio in list_puntoEnvio " class="form-control" >
+                                        </select>
+                                        
+										<label for="id_punto_envio" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Orden Compra</label>
+										<input type="text" placeholder="Orden Compra" id="orden_compra" name="orden_compra" class="form-control" ng-model="pedidos.orden_compra" required>
+										<label for="orden_compra" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Fecha Solicitud</label>
+										<input type="date" id="fecha_solicitud" name="fecha_solicitud" class="form-control"  ng-model="date"  ng-change="fechasolicitud()" required>
+										<label for="fecha_solicitud" generated="true" class="has-error help-block" style="display:none;"></label>
+									</div>
+
+									<div class="form-actions">
+										<button class="btn btn-primary pull-right"  type="submit" ng-click="guardarCabezera() " ng-disabled="form_encabezado.$invalid">Continuar</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab_2">
+							<div class="col-md-12">
+								<form class="form-inline" name="form_detalle" >
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="input-group">
+                                                	<label for="rowid_item" class="control-label">Items  <span class="required">*</span></label>
+													<input type="text" ng-model="SearchItem"  placeholder="Buscar Item" name="rowid_item" class="form-control"/>
+                                                    <select  id="rowid_item" required
+                                                        ng-model="item"  ng-options="item as item.descripcion 
+                                                        for item in list_items  |filter:SearchItem" class="form-control" >
+                                                    </select>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-success" ng-click="adicionaritem()" data-toggle="dropdown"><span class="icon-ok" ng-disabled"form_detalle.$invalid"></span></button>
+													</div><!--input-group-btn -->
+												</div><!--input-group -->
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible="0">
+													<ul class="list-group" ng-repeat="itemsAgregadosPedido in itemsAgregadosPedido">
+                                                        <li class="list-group-item">
+                                                        	<span class="badge">Valor Total: {{itemsAgregadosPedido.precio*itemsAgregadosPedido.cantidad}}</span>
+                                                            {{itemsAgregadosPedido.descripcion}} 
+                                                            <input type="number" class="form-control input-width-mini" ng-model="itemsAgregadosPedido.cantidad" style="margin:-5px 5px -5px 5px;" value="1" min="1"/>
+                                                        	<span class="badge">Valor Unitario: {{itemsAgregadosPedido.precio}}</span>
+                                                            <button type="button" class="btn btn-danger" ng-click="delete(itemsAgregadosPedido)" value="Eliminar" data-toggle="dropdown">Eliminar</button>
+                                                            
+                                                        </li>
+													</ul>
+												</div> <!-- /.scroller -->
+											</div>
+										</div>
+									</div>
+
+									<div class="form-actions">
+										<button class="btn btn-primary pull-right" type="submit" ng-click="CambiarTab('2','siguiente');" >Continuar</button>
+										<button class="btn btn-primary pull-right" type="submit" ng-click="CambiarTab('2','atras');">Atras</button>
+									</div>
+								</form>
+							</div>
+						<div class="tab-pane" id="tab_3">
+							<div class="col-md-12">
+								<form class="form-inline">
+									<div class="form-group">
+
+										<ul class="list-group">
+											<li class="list-group-item">
+												<span class="badge">$14.000.000</span>
+												324245 - POLLITO ENGORDE (24k)
+												<input type="number" class="form-control input-width-mini" style="margin:-5px 5px -5px 5px;" value="10" min="1"/>
+											</li>
+										</ul>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-12">
+								<div class="form-actions">
+									<button class="btn btn-success pull-right">Finalizar <i class="icon-angle-right"></i></button>
+									<button class="btn btn-primary pull-right" ng-click="CambiarTab(3,'atras');">Atras</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--END TABS-->
+	<!--		</div>
+		</div>-->
+	</div>
+</div>

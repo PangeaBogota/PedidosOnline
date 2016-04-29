@@ -1,0 +1,42 @@
+<div class="row">
+    <!--=== Feeds (with Tabs) ===-->
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> Clientes</h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <a href="#/ventas/pedido_nuevo" class="btn btn-xs"><i class="icon-plus"></i></a>
+                        <span class="btn btn-xs widget-refresh"><i class="icon-refresh"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+                <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible="0">
+                    <ul class="feeds clearfix" ng-controller="TercerosController">
+                        <li ng-repeat="terceros in terceros">
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-success">
+                                            <i class="icon-bell"></i>
+                                        </div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">{{terceros.identificacion}} {{terceros.razonsocial}} {{terceros.nombre_comercial}}</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">
+                                    {{terceros.fechacreacion}}
+                                </div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                    </ul> <!-- /.feeds -->
+                </div> <!-- /.scroller -->
+            </div> <!-- /.widget-content -->
+        </div> <!-- /.widget .box -->
+    </div> <!-- /.col-md-6 -->
+    <!-- /Feeds (with Tabs) -->
+</div> <!-- /.row -->

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PedidosOnline">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <!--<base href="/PedidosOnline/view">-->
+        <title>PedidosOnline</title>
+
+        <!--=== CSS ===-->
+
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- jQuery UI -->
+        <!--<link href="plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" href="plugins/jquery-ui/jquery.ui.1.10.2.ie.css"/>
+        <![endif]-->
+
+        <!-- Theme -->
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="stylesheet" href="assets/css/fontawesome/font-awesome.min.css">
+        <!--[if IE 7]>
+        <link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
+        <![endif]-->
+
+        <!--[if IE 8]>
+        <link href="assets/css/ie8.css" rel="stylesheet" type="text/css"/>
+        <![endif]-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+        <!--=== JavaScript ===-->
+
+        <!--=== PedidosOnline ===-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
+
+        <script type="text/javascript" src="js/constantes.js"></script>
+
+        <script type="text/javascript" src="libs/angular.min.js"></script>
+        <script type="text/javascript" src="libs/angular-resource.min.js"></script>
+        <script type="text/javascript" src="libs/angular-route.min.js"></script>
+        <script type="text/javascript" src="libs/angular-websql.min.js"></script>
+
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/directivas.js"></script>
+
+
+        <!-- Model JS -->
+        <script type="text/javascript" src="model/database.js"></script>
+        
+        <script type="text/javascript" src="model/crud.js"></script>
+        <!-- Controladores JS -->
+        <script type="text/javascript" src="controller/erp_tercerosController.js"></script>
+
+        <script type="text/javascript" src="controller/ventasController.js"></script>
+        <script type="text/javascript" src="controller/t_pedidosController.js"></script>
+        <script type="text/javascript" src="controller/t_pedidos_detalleController.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+
+        <!--<script type="text/javascript" src="libs/underscore-min.js"></script>
+        <script type="text/javascript" src="libs/backbone-min.js"></script>-->
+
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/libs/lodash.compat.min.js"></script>
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="assets/js/libs/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Smartphone Touch Events -->
+        <script type="text/javascript" src="plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="plugins/event.swipe/jquery.event.move.js"></script>
+        <script type="text/javascript" src="plugins/event.swipe/jquery.event.swipe.js"></script>
+
+        <!-- General -->
+        <script type="text/javascript" src="assets/js/libs/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/respond/respond.min.js"></script>
+        <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
+        <script type="text/javascript" src="plugins/cookie/jquery.cookie.min.js"></script>
+        <script type="text/javascript" src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script type="text/javascript" src="plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+
+        <!-- Page specific plugins -->
+        <!-- Charts -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="plugins/flot/excanvas.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.tooltip.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.growraf.min.js"></script>
+        <script type="text/javascript" src="plugins/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+        <script type="text/javascript" src="plugins/daterangepicker/moment.min.js"></script>
+        <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.js"></script>
+        <script type="text/javascript" src="plugins/blockui/jquery.blockUI.min.js"></script>
+
+        <script type="text/javascript" src="plugins/fullcalendar/fullcalendar.min.js"></script>
+
+        <!-- Forms -->
+        <script type="text/javascript" src="plugins/uniform/jquery.uniform.min.js"></script>
+        <!-- Styled radio and checkboxes -->
+        <script type="text/javascript" src="plugins/select2/select2.min.js"></script> <!-- Styled select boxes -->
+        <script type="text/javascript" src="plugins/fileinput/fileinput.js"></script>
+
+        <!-- Noty -->
+        <script type="text/javascript" src="plugins/noty/jquery.noty.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/top.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/topCenter.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/topLeft.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/topRight.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/inline.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/centerRight.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/centerLeft.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/center.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/bottomRight.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/bottomLeft.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/bottomCenter.js"></script>
+        <script type="text/javascript" src="plugins/noty/layouts/bottom.js"></script>
+        <script type="text/javascript" src="plugins/noty/themes/default.js"></script>
+
+        <!-- DataTables -->
+        <script type="text/javascript" src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/datatables/DT_bootstrap.js"></script>
+        <script type="text/javascript" src="plugins/datatables/responsive/datatables.responsive.js"></script>
+        <!-- optional -->
+
+        <!-- App -->
+        <script type="text/javascript" src="assets/js/app.js"></script>
+        <script type="text/javascript" src="assets/js/plugins.js"></script>
+        <script type="text/javascript" src="assets/js/plugins.form-components.js"></script>
+
+        <style type="text/css">
+            #DivLoadingPage {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('assets/img/loading.gif') 50% 50% no-repeat rgb(0, 0, 0);
+                opacity: 0.5;
+            }
+
+            /*label.error {
+                border: 0px solid red;
+                color: red;
+            }
+
+            input:required:valid {
+                border: 1px solid green;
+            }*/
+
+            .ui-autocomplete-loading {
+                background: url('assets/img/auto_loader.gif') no-repeat right center;
+            }
+        </style>
+
+        <script>
+
+            $(window).load(function () {
+                $("#DivLoadingPage").fadeOut("slow");
+            });
+
+            // Muestra Modal Procesando
+            function ProcesadoShow() {
+                $("#ModalProcessing").modal()                       // initialized with defaults
+                $("#ModalProcessing").modal({backdrop: 'static', keyboard: false})   // initialized with no keyboard
+                $("#ModalProcessing").modal('show')
+            }
+
+            // Oculta Modal de procesando
+            function ProcesadoHiden() {
+                $("#ModalProcessing").modal('hide');
+            }
+
+            // Genera Los Mensajes de Alertas
+            function Mensajes(text, type, layot) {
+                if (layot == '' || layot == null)
+                    layot = 'bottomRight';
+
+                var self = $(this);
+                noty({
+                    text: text,
+                    type: type,
+                    theme: 'defaultTheme',
+                    layout: layot,
+                    timeout: 10000,
+                    modal: self.data('modal')
+                });
+
+                return false;
+            }
+
+            // Genera Alertas con estilo de la plantilla
+            function MostrarAlerta(msj) {
+                bootbox.alert(msj, function () {
+                    console.log("Alert Callback");
+                });
+            }
+
+            // Genera mensajes de confirmacion con el estilo de la plantilla
+            function Confirmar(msj) {
+                bootbox.confirm(msj, function (confirmed) {
+                    //console.log("Confirmed: " + confirmed);
+                    return confirmed;
+                });
+            }
+
+            // Valida Campos Numericos
+            function SoloNumeros(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+            }
+
+            // Genera GUID
+            function Aleatorio(inferior, superior) {
+                var numPosibilidades = superior - inferior
+                var aleat = Math.random() * numPosibilidades
+                aleat = Math.round(aleat)
+                return parseInt(inferior) + aleat
+            }
+        </script>
+    </head>
+    <body ng-cloak>
+    <!-- Header -->
+    <header class="header navbar navbar-fixed-top" role="banner">
+        <!-- Top Navigation Bar -->
+        <div class="container" ng-controller="sessionController">
+            <!-- Only visible on smartphones, menu toggle -->
+            <ul class="nav navbar-nav">
+                <li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+            </ul>
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="#/">
+                <img src="assets/img/logo.png" alt="logo"/>
+                <strong>Pedidos</strong>Online
+            </a>
+            <!-- /logo -->
+
+            <!-- Sidebar Toggler -->
+            <a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
+                <i class="icon-reorder"></i>
+            </a>
+            <!-- /Sidebar Toggler -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- User Login Dropdown -->
+                <li class="dropdown user">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <!--<img alt="" src="assets/img/avatar1_small.jpg" />-->
+                        <i class="icon-male"></i>
+                        <span class="username">{{sessiondate.rol}}</span>
+                        <i class="icon-caret-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                    	<li><a   ng-click="sincronizar()"><i class="icon-ok"></i> Sincronizar</a></li>
+                        <li><a href="#/configuracion/mi_cuenta"><i class="icon-user"></i> Mi Perfil</a></li>
+                        <li><a href="#/crm/calendario"><i class="icon-calendar"></i> Mi Agenda</a></li>
+                        <li><a href="#/ventas/pedidos_ingresados"><i class="icon-tasks"></i> Mis Pedidos</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="icon-key"></i> Cerrar Session</a></li>
+                    </ul>
+                </li>
+                <!-- /user login dropdown -->
+            </ul>
+            <!-- /Top Right Menu -->
+        </div>
+        <!-- /top navigation bar -->
+    </header> <!-- /.header -->
+
+    <div id="container">
+        <!-- Menu -->
+        <div id="sidebar" class="sidebar-fixed" ng-controller="menuController">
+            <div id="sidebar-content">
+
+                <!-- Search Input -->
+                <form class="sidebar-search">
+                    <div class="input-box">
+                        <button type="submit" class="submit">
+                            <i class="icon-search"></i>
+                        </button>
+                            <span>
+                                <input type="text" placeholder="Search...">
+                            </span>
+                    </div>
+                </form>
+
+                <!-- Search Results -->
+                <div class="sidebar-search-results">
+
+                    <i class="icon-remove close"></i>
+                    <!-- Documents -->
+                    <div class="title">
+                        Documents
+                    </div>
+                    <ul class="notifications">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="col-left">
+                                    <span class="label label-info"><i class="icon-file-text"></i></span>
+                                </div>
+                                <div class="col-right with-margin">
+                                    <span class="message"><strong>John Doe</strong> received $1.527,32</span>
+                                    <span class="time">finances.xls</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="col-left">
+                                    <span class="label label-success"><i class="icon-file-text"></i></span>
+                                </div>
+                                <div class="col-right with-margin">
+                                    <span class="message">My name is <strong>John Doe</strong> ...</span>
+                                    <span class="time">briefing.docx</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /Documents -->
+                    <!-- Persons -->
+                    <div class="title">
+                        Persons
+                    </div>
+                    <ul class="notifications">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="col-left">
+                                    <span class="label label-danger"><i class="icon-female"></i></span>
+                                </div>
+                                <div class="col-right with-margin">
+                                    <span class="message">Jane <strong>Doe</strong></span>
+                                    <span class="time">21 years old</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div> <!-- /.sidebar-search-results -->
+
+                <!--=== Navigation ===-->
+                <ul id="nav">
+                    <li class="current">
+                        <a href="#/">
+                            <i class="icon-dashboard"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li ng-repeat="menu in menuList">
+                        <a href="{{menu.url}}">
+                            <i class="{{menu.icono}}"></i>
+                            {{menu.nombre_opcion}}
+                        </a>
+                        <ul class="sub-menu" ng-if="menu.isSubmenu">
+                            <li ng-repeat="sub in menu.submenu">
+                                <a href="{{sub.url}}">
+                                    <i class="{{sub.icono}}"></i>
+                                    {{sub.nombre_opcion}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- /Navigation -->
+                <!--<div class="sidebar-title">
+                    <span>Sincronizacion</span>
+                </div>
+                <ul class="notifications">
+                    <li class="current">
+                        <div class="col-left">
+                            <span class="label label-success"><i class="icon-ok-sign"></i></span>
+                        </div>
+                        <div class="col-right with-margin">
+                            <label class="btn" ng-click="sincronizar()">
+                                 Sincronizar
+                            </label>
+                        </div>
+                    </li>
+                </ul>-->
+                
+                <div class="sidebar-title">
+                    <span>Notificaciones</span>
+                </div>
+                <ul class="notifications demo-slide-in">
+                    <!-- .demo-slide-in is just for demonstration purposes. You can remove this. -->
+                    
+                    <li style="display: none;">
+                        <!-- style-attr is here only for fading in this notification after a specific time. Remove this. -->
+                        <div class="col-left">
+                            <span class="label label-danger"><i class="icon-warning-sign"></i></span>
+                        </div>
+                        <div class="col-right with-margin">
+                            <span class="message">Server <strong>#512</strong> crashed.</span>
+                            <span class="time">few seconds ago</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="sidebar-widget align-center">
+                    <div class="btn-group" data-toggle="buttons" id="theme-switcher">
+                        <label class="btn active">
+                            <input type="radio" name="theme-switcher" data-theme="bright"><i class="icon-sun"></i> D&iacute;a
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="theme-switcher" data-theme="dark"><i class="icon-moon"></i> Noche
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="divider" class="resizeable"></div>
+        </div>
+        <!-- /Menu -->
+
+        <!-- Container -->
+        <div id="content">
+            <div class="container">
+                <!-- Breadcrumbs line -->
+                <div class="crumbs">
+                    <ul id="breadcrumbs" class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="index.html">Dashboard</a>
+                        </li>
+                        <!--<li class="current">
+                            <a href="pages_calendar.html" title="">Calendar</a>
+                        </li>-->
+                    </ul>
+
+     <!--               <ul class="crumb-buttons">
+                        <li><a href="charts.html" title=""><i class="icon-signal"></i><span>Statistics</span></a></li>
+                        <li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="icon-tasks"></i><span>Users <strong>(+3)</strong></span><i
+                                class="icon-angle-down left-padding"></i></a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="form_components.html" title=""><i class="icon-plus"></i>Add new User</a></li>
+                                <li><a href="tables_dynamic.html" title=""><i class="icon-reorder"></i>Overview</a></li>
+                            </ul>
+                        </li>
+                        <li class="range"><a href="#">
+                            <i class="icon-calendar"></i>
+                            <span></span>
+                            <i class="icon-angle-down"></i>
+                        </a></li>
+                    </ul>-->
+                </div>
+                <!-- /Breadcrumbs line -->
+
+                <!--=== Page Header ===-->
+                <div class="page-header">
+                    </br>
+                </div>
+                <!-- /Page Header -->
+
+                <ng-view></ng-view>
+
+                <div id="DivLoadingPage"></div>
+                <div class="modal fade" data-backdrop="static" data-keyboard="false" id="ModalProcessing"
+                     style="overflow:hidden; text-align:center;">
+                    <img src="assets/img/loading.gif" alt="Loading"
+                         style="display: block;margin-left: auto; margin-right: auto; margin-top: 250px;">
+                </div>
+            </div>
+        </div>
+        <!-- /.Container -->
+    </div>
+
+    <!-- Demo JS -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+    <script type="text/javascript" src="assets/js/demo/charts.js"></script>
+    <!--<script type="text/javascript" src="assets/js/demo/charts/chart_filled_blue.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/demo/charts/chart_simple.js"></script>-->
+
+    </body>
+</html>

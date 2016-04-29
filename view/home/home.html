@@ -1,0 +1,271 @@
+<script>
+
+    // Sample Data
+    var d1 = [[1262304000000, 0], [1264982400000, 500], [1267401600000, 700], [1270080000000, 1300], [1272672000000, 2600], [1275350400000, 1300], [1277942400000, 1700], [1280620800000, 1300], [1283299200000, 1500], [1285891200000, 2000], [1288569600000, 1500], [1291161600000, 1200]];
+
+    var data1 = [
+        {label: "Total Ventas", data: d1, color: App.getLayoutColorCode('blue')}
+    ];
+
+    $.plot("#chart_filled_blue", data1, $.extend(true, {}, Plugins.getFlotDefaults(), {
+        xaxis: {
+            min: (new Date(2009, 12, 1)).getTime(),
+            max: (new Date(2010, 11, 2)).getTime(),
+            mode: "time",
+            tickSize: [1, "month"],
+            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            tickLength: 0
+        },
+        series: {
+            lines: {
+                fill: true,
+                lineWidth: 1.5
+            },
+            points: {
+                show: true,
+                radius: 2.5,
+                lineWidth: 1.1
+            },
+            grow: {active: true, growings: [{stepMode: "maximum"}]}
+        },
+        grid: {
+            hoverable: true,
+            clickable: true
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: '%s: %y'
+        }
+    }));
+
+</script>
+
+<!--=== Page Header ===-->
+<div class="page-header">
+    <div class="page-title">
+        <h3>Dashboard</h3>
+        <span>Bienvenido</span>
+    </div>
+
+    <!-- Page Stats -->
+    <ul class="page-stats">
+        <li>
+            <div class="summary">
+                <span>New orders</span>
+                <h3>17,561</h3>
+            </div>
+            <div id="sparkline-bar" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
+            <!-- Use instead of sparkline e.g. this:
+            <div class="graph circular-chart" data-percent="73">73%</div>
+            -->
+        </li>
+        <li>
+            <div class="summary">
+                <span>Mi balance</span>
+                <h3>$21,561.21</h3>
+            </div>
+            <div id="sparkline-bar2" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
+        </li>
+    </ul>
+    <!-- /Page Stats -->
+</div>
+<!-- /Page Header -->
+
+<!--=== Page Content ===-->
+<!--=== Statboxes ===-->
+<div class="row row-bg"> <!-- .row-bg -->
+    <!--
+        <div class="col-sm-6 col-md-3">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                    <div class="visual cyan">
+                        <div class="statbox-sparkline">30,20,15,30,22,25,26,30,27</div>
+                    </div>
+                    <div class="title">Clients</div>
+                    <div class="value">4 501</div>
+                    <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                </div>
+            </div> &lt;!&ndash; /.smallstat &ndash;&gt;
+        </div> &lt;!&ndash; /.col-md-3 &ndash;&gt;
+
+        <div class="col-sm-6 col-md-3">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                    <div class="visual green">
+                        <div class="statbox-sparkline">20,30,30,29,22,15,20,30,32</div>
+                    </div>
+                    <div class="title">Feedbacks</div>
+                    <div class="value">714</div>
+                    <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                </div>
+            </div> &lt;!&ndash; /.smallstat &ndash;&gt;
+        </div> &lt;!&ndash; /.col-md-3 &ndash;&gt;
+    -->
+
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual red">
+                    <i class="icon-user"></i>
+                </div>
+                <div class="title">Clientes</div>
+                <div class="value">2 521 719</div>
+                <a class="more" href="javascript:void(0);">Ver Mas <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div> <!-- /.smallstat -->
+    </div> <!-- /.col-md-3 -->
+
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual yellow">
+                    <i class="icon-dollar"></i>
+                </div>
+                <div class="title">Total Ventas</div>
+                <div class="value">$42,512.61</div>
+                <a class="more" href="javascript:void(0);">Ver Mas <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div> <!-- /.smallstat -->
+    </div> <!-- /.col-md-3 -->
+</div> <!-- /.row -->
+<!-- /Statboxes -->
+
+<!--=== Blue Chart ===-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> Grafico de ventas <!--(<span class="blue">+29%</span>)--></h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+                <div id="chart_filled_blue" class="chart"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="widget-content">
+                <ul class="stats"> <!-- .no-dividers -->
+                    <li>
+                        <strong>4,853</strong>
+                        <small>Total Ventas</small>
+                    </li>
+                    <li class="light hidden-xs">
+                        <strong>271</strong>
+                        <small>&Uacute;ltimas 24 horas</small>
+                    </li>
+                    <li>
+                        <strong>1,025</strong>
+                        <small>&Uacute;ltima semana</small>
+                    </li>
+                    <li class="light hidden-xs">
+                        <strong>105</strong>
+                        <small>&Uacute;ltimo mes</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->
+<!-- /Blue Chart -->
+
+<div class="row">
+    <!--=== Feeds (with Tabs) ===-->
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> Actividades</h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-refresh"><i class="icon-refresh"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+                <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible="0">
+                    <ul class="feeds clearfix">
+                        <li>
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-success"><i class="icon-plus"></i></div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">New user registered.</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">1 min ago</div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-success"><i class="icon-plus"></i></div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">New user registered.</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">5 mins ago</div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-info"><i class="icon-plus"></i></div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">New order received.</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">10 mins ago</div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-success"><i class="icon-plus"></i></div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">New user registered.</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">20 mins ago</div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="content">
+                                    <div class="content-col1">
+                                        <div class="label label-info"><i class="icon-plus"></i></div>
+                                    </div>
+                                    <div class="content-col2">
+                                        <div class="desc">New order received.</div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col1 -->
+                            <div class="col2">
+                                <div class="date">30 mins ago</div>
+                            </div> <!-- /.col2 -->
+                        </li>
+                    </ul> <!-- /.feeds -->
+                </div> <!-- /.scroller -->
+            </div> <!-- /.widget-content -->
+        </div> <!-- /.widget .box -->
+    </div> <!-- /.col-md-6 -->
+    <!-- /Feeds (with Tabs) -->
+</div> <!-- /.row -->
+<!-- /Page Content -->
